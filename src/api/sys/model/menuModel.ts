@@ -1,10 +1,10 @@
 import { RouteMeta } from '/@/router/types';
 export interface RouteItem {
+  id: string;
   path: string;
   component: any;
   meta: RouteMeta;
   name?: string;
-  alias?: string | string[];
   redirect?: string;
   caseSensitive?: boolean;
   children?: RouteItem[];

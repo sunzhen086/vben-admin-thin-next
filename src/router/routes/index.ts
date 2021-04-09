@@ -5,6 +5,7 @@ import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/@/router/routes/basic';
 import { mainOutRoutes } from './mainOut';
 import { PageEnum } from '/@/enums/pageEnum';
 import { t } from '/@/hooks/web/useI18n';
+import { LAYOUT } from '/@/router/constant';
 
 const modules = import.meta.globEager('./modules/**/*.ts');
 
@@ -36,5 +37,25 @@ export const LoginRoute: AppRouteRecordRaw = {
   },
 };
 
+export const HomeRoute: AppRouteRecordRaw = {
+  path: '',
+  name: 'HomeLayout',
+  component: LAYOUT,
+  meta: { title: '' },
+  children: [
+    {
+      path: '/home',
+      name: 'Home',
+      component: () => import('/@/views/dashboard/workbench/index.vue'),
+      meta: {
+        title: '首页',
+        affix: true,
+        icon: 'bx:bx-home',
+      },
+    },
+  ],
+};
+
+
 // Basic routing without permission
-export const basicRoutes = [LoginRoute, RootRoute, ...mainOutRoutes, REDIRECT_ROUTE];
+export const basicRoutes = [LoginRoute, RootRoute, HomeRoute, ...mainOutRoutes, REDIRECT_ROUTE];

@@ -3,9 +3,9 @@ import type { App } from 'vue';
 
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { basicRoutes, LoginRoute } from './routes';
-import { REDIRECT_NAME } from './constant';
+import { REDIRECT_NAME,HOME_NAME } from './constant';
 
-const WHITE_NAME_LIST = [LoginRoute.name, REDIRECT_NAME];
+const WHITE_NAME_LIST = [LoginRoute.name,'HomeLayout',HOME_NAME,REDIRECT_NAME];
 
 // app router
 const router = createRouter({
@@ -18,11 +18,11 @@ const router = createRouter({
 // reset router
 export function resetRouter() {
   router.getRoutes().forEach((route) => {
-    const { name } = route;
+    const name = route.name;
     if (name && !WHITE_NAME_LIST.includes(name as string)) {
       router.hasRoute(name) && router.removeRoute(name);
     }
-  });
+  })
 }
 
 // config router
