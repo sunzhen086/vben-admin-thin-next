@@ -22,13 +22,3 @@ export const getParentLayout = (_name?: string) => {
       });
     });
 };
-
-// export const getParentLayout = (name: string) => {
-//   return () =>
-//     new Promise((resolve) => {
-//       resolve({
-//         ...ParentLayout,
-//         name,
-//       });
-//     });
-// };
